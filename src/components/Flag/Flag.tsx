@@ -24,15 +24,14 @@ export const Flag = (props: FlagProps) => {
       return unknownFlagElement;
     }
     return (
-      <Avatar
-        alt={isoCode}
-        className={cn(
-          'h-fit w-[32px] shrink-0 rounded-none object-cover',
-          flag
-        )}
-        size="sm"
-        src={getDefaultImageSrc(isoCode)}
-      />
+      <div className={cn('[&_img]:[image-rendering:crisp-edges]', flag)}>
+        <Avatar
+          alt={isoCode}
+          className="h-fit w-[32px] shrink-0 rounded-none object-cover"
+          size="sm"
+          src={getDefaultImageSrc(isoCode)}
+        />
+      </div>
     );
   }, [isoCode, unknownFlagElement, flag]);
 };
