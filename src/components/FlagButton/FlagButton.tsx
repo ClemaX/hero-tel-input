@@ -3,7 +3,11 @@
 import { Button, type ButtonProps, cn } from '@heroui/react';
 import type { HeroTelInputCountry } from '../../constants/countries.js';
 import { getCallingCodeOfCountry } from '../../helpers/helper-country.js';
-import { Flag } from '../Flag/Flag.js';
+import { Flag, type FlagClassNames } from '../Flag/Flag.js';
+
+export type FlagButtonClassNames = FlagClassNames & {
+  flagButton?: string;
+};
 
 export type FlagButtonProps = ButtonProps & {
   isoCode: HeroTelInputCountry | null;
@@ -11,6 +15,7 @@ export type FlagButtonProps = ButtonProps & {
   langOfCountryName?: Intl.LocalesArgument;
   disableDropdown?: boolean;
   unknownFlagElement: React.ReactNode;
+  classNames?: FlagButtonClassNames;
 };
 
 export const FlagButton = (props: FlagButtonProps) => {
@@ -20,12 +25,19 @@ export const FlagButton = (props: FlagButtonProps) => {
     langOfCountryName,
     disableDropdown,
     unknownFlagElement,
+    classNames,
     className,
     ...rest
   } = props;
 
+  const { flag, flagButton } = classNames || {};
+
   const flagElement = (
-    <Flag isoCode={isoCode} unknownFlagElement={unknownFlagElement} />
+    <Flag
+      isoCode={isoCode}
+      unknownFlagElement={unknownFlagElement}
+      classNames={{ flag }}
+    />
   );
 
   return (
@@ -35,7 +47,7 @@ export const FlagButton = (props: FlagButtonProps) => {
           tabIndex={-1}
           variant="light"
           size="sm"
-          className={cn('min-w-10 flex-shrink-0 px-1', className)}
+          className={cn('min-w-10 flex-shrink-0 px-1', flagButton, className)}
           startContent={flagElement}
         >
           {forceCallingCode && isoCode ? (
@@ -47,7 +59,7 @@ export const FlagButton = (props: FlagButtonProps) => {
         <Button
           variant="light"
           size="sm"
-          className={cn('min-w-10 flex-shrink-0 px-1', className)}
+          className={cn('min-w-10 flex-shrink-0 px-1', flagButton, className)}
           startContent={flagElement}
           {...rest}
         >

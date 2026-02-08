@@ -15,7 +15,10 @@ import {
 import { DEFAULT_LANG } from '../../constants/lang.js';
 import { filterCountries } from '../../helpers/helper-country.js';
 import { getDisplayNames } from '../../helpers/helper-intl.js';
-import { FlagButton } from '../FlagButton/FlagButton.js';
+import {
+  FlagButton,
+  type FlagButtonClassNames,
+} from '../FlagButton/FlagButton.js';
 import {
   FlagDialog,
   type FlagDialogClassNames,
@@ -37,6 +40,7 @@ import {
 export type FlagAutocompleteClassNames = FlagDialogClassNames &
   FlagDialogContentClassNames &
   FlagMenuItemClassNames &
+  FlagButtonClassNames &
   FlagSearchFieldClassNames &
   FlagModalClassNames &
   FlagModalOverlayClassNames;
@@ -78,6 +82,8 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
     dialog,
     dialogContent,
     menuItem,
+    flag,
+    flagButton,
     textField,
     searchInput,
     modal,
@@ -125,6 +131,7 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
           langOfCountryName={langOfCountryName}
           disableDropdown={disableDropdown}
           unknownFlagElement={unknownFlagElement}
+          classNames={{ flag, flagButton }}
           onPress={() => {
             setOpen(true);
           }}
@@ -146,7 +153,7 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
                     {(itemProps) => (
                       <FlagMenuItem
                         {...itemProps}
-                        classNames={{ menuItem }}
+                        classNames={{ menuItem, flag }}
                         unknownFlagElement={unknownFlagElement}
                         active={itemProps.isoCode === initialIsoCode}
                         onAction={() => {

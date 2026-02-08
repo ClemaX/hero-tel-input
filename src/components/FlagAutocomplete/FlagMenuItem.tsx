@@ -4,7 +4,11 @@ import {
   COUNTRIES,
   type HeroTelInputCountry,
 } from '../../constants/countries.js';
-import { Flag } from '../Flag/Flag.js';
+import { Flag, type FlagClassNames } from '../Flag/Flag.js';
+
+export type FlagMenuItemClassNames = FlagClassNames & {
+  menuItem?: string;
+};
 
 export type FlagMenuItemProps = MenuItemProps & {
   isoCode: HeroTelInputCountry | null;
@@ -14,13 +18,9 @@ export type FlagMenuItemProps = MenuItemProps & {
   active?: boolean;
 };
 
-export type FlagMenuItemClassNames = {
-  menuItem?: string;
-};
-
 export const FlagMenuItem = (props: FlagMenuItemProps) => {
   const { isoCode, name, unknownFlagElement, classNames, active } = props;
-  const { menuItem } = classNames || {};
+  const { menuItem, flag } = classNames || {};
   return (
     <MenuItem
       {...props}
@@ -37,7 +37,11 @@ export const FlagMenuItem = (props: FlagMenuItemProps) => {
     >
       <div className="flex w-full flex-row items-center gap-2 p-1">
         <div className="box-content flex flex-1 flex-row items-center gap-2 overflow-hidden">
-          <Flag isoCode={isoCode} unknownFlagElement={unknownFlagElement} />
+          <Flag
+            isoCode={isoCode}
+            unknownFlagElement={unknownFlagElement}
+            classNames={{ flag }}
+          />
           <span className="truncate">{name}</span>
         </div>
         {isoCode && (
