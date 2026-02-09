@@ -8,6 +8,7 @@ import { Flag, type FlagClassNames } from '../Flag/Flag.js';
 
 export type FlagMenuItemClassNames = FlagClassNames & {
   menuItem?: string;
+  menuItemActive?: string;
 };
 
 export type FlagMenuItemProps = MenuItemProps & {
@@ -20,7 +21,7 @@ export type FlagMenuItemProps = MenuItemProps & {
 
 export const FlagMenuItem = (props: FlagMenuItemProps) => {
   const { isoCode, name, unknownFlagElement, classNames, active } = props;
-  const { menuItem, flagWrapper, flagImg } = classNames || {};
+  const { menuItem, menuItemActive, flagWrapper, flagImg } = classNames || {};
   return (
     <MenuItem
       {...props}
@@ -31,7 +32,7 @@ export const FlagMenuItem = (props: FlagMenuItemProps) => {
         'pressed:bg-primary/80 focus:text-foreground text-foreground-900 focus:bg-primary',
         menuItem,
         {
-          'bg-primary': active,
+          [cn('bg-primary', menuItemActive)]: active,
         }
       )}
     >
