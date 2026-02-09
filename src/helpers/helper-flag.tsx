@@ -14,21 +14,7 @@ export const getDefaultImageSrc = (isoCode: HeroTelInputCountry) => {
 
   // see https://flagpedia.net/download/api
   // Available widths: w20, w40, w80, w160, w320, w640, w1280, w2560
-  return `https://flagcdn.com/w40/${isoCode.toLowerCase()}.webp`;
-};
-
-export const getDefaultImageSrcSet = (isoCode: HeroTelInputCountry) => {
-  // these 2 flags do not exist on flagpedia CDN
-  if (isoCode === 'TA' || isoCode === 'AC') {
-    return undefined;
-  }
-
-  // see https://flagpedia.net/download/api
-  // Provide multiple sizes for responsive images
-  // 40w for 1x displays, 80w for 2x, 160w for 3x+
-  const base = `https://flagcdn.com`;
-  const code = isoCode.toLowerCase();
-  return `${base}/w40/${code}.webp 40w, ${base}/w80/${code}.webp 80w, ${base}/w160/${code}.webp 160w`;
+  return `https://flagcdn.com/${isoCode.toLowerCase()}.svg`;
 };
 
 export const defaultUnknownFlagElement = (

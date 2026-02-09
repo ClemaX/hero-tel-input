@@ -3,10 +3,7 @@
 import { useMemo } from 'react';
 import { cn, Image } from '@heroui/react';
 import type { HeroTelInputCountry } from '../../constants/countries.js';
-import {
-  getDefaultImageSrc,
-  getDefaultImageSrcSet,
-} from '../../helpers/helper-flag.js';
+import { getDefaultImageSrc } from '../../helpers/helper-flag.js';
 
 export type FlagClassNames = {
   flagWrapper?: string;
@@ -31,7 +28,6 @@ export const Flag = (props: FlagProps) => {
       <Image
         alt={isoCode}
         src={getDefaultImageSrc(isoCode)}
-        srcSet={getDefaultImageSrcSet(isoCode)}
         radius="none"
         classNames={{
           wrapper: cn('h-fit w-[32px]', classNames?.flagWrapper),
