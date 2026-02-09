@@ -20,7 +20,7 @@ export type FlagMenuItemProps = MenuItemProps & {
 
 export const FlagMenuItem = (props: FlagMenuItemProps) => {
   const { isoCode, name, unknownFlagElement, classNames, active } = props;
-  const { menuItem, flag } = classNames || {};
+  const { menuItem, flagWrapper, flagImg } = classNames || {};
   return (
     <MenuItem
       {...props}
@@ -40,7 +40,7 @@ export const FlagMenuItem = (props: FlagMenuItemProps) => {
           <Flag
             isoCode={isoCode}
             unknownFlagElement={unknownFlagElement}
-            classNames={{ flag }}
+            classNames={{ flagWrapper, flagImg }}
           />
           <span className="truncate">{name}</span>
         </div>

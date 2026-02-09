@@ -30,13 +30,13 @@ export const FlagButton = (props: FlagButtonProps) => {
     ...rest
   } = props;
 
-  const { flag, flagButton } = classNames || {};
+  const { flagWrapper, flagImg, flagButton } = classNames || {};
 
   const flagElement = (
     <Flag
       isoCode={isoCode}
       unknownFlagElement={unknownFlagElement}
-      classNames={{ flag }}
+      classNames={{ flagWrapper, flagImg }}
     />
   );
 
@@ -47,6 +47,7 @@ export const FlagButton = (props: FlagButtonProps) => {
           tabIndex={-1}
           variant="light"
           size="sm"
+          radius="none"
           className={cn('min-w-10 flex-shrink-0 px-1', flagButton, className)}
           startContent={flagElement}
         >
@@ -59,6 +60,7 @@ export const FlagButton = (props: FlagButtonProps) => {
         <Button
           variant="light"
           size="sm"
+          radius="none"
           className={cn('min-w-10 flex-shrink-0 px-1', flagButton, className)}
           startContent={flagElement}
           {...rest}

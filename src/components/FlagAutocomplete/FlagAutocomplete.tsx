@@ -82,7 +82,7 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
     dialog,
     dialogContent,
     menuItem,
-    flag,
+    flagImg,
     flagButton,
     textField,
     searchInput,
@@ -131,7 +131,7 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
           langOfCountryName={langOfCountryName}
           disableDropdown={disableDropdown}
           unknownFlagElement={unknownFlagElement}
-          classNames={{ flag, flagButton }}
+          classNames={{ flagImg, flagButton }}
           onPress={() => {
             setOpen(true);
           }}
@@ -153,7 +153,7 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
                     {(itemProps) => (
                       <FlagMenuItem
                         {...itemProps}
-                        classNames={{ menuItem, flag }}
+                        classNames={{ menuItem, flagImg }}
                         unknownFlagElement={unknownFlagElement}
                         active={itemProps.isoCode === initialIsoCode}
                         onAction={() => {
