@@ -83,6 +83,7 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
     dialogContent,
     menuItem,
     menuItemActive,
+    flagWrapper,
     flagImg,
     flagButton,
     textField,
@@ -154,7 +155,12 @@ export const FlagAutocomplete = (props: FlagAutocompleteProps) => {
                     {(itemProps) => (
                       <FlagMenuItem
                         {...itemProps}
-                        classNames={{ menuItem, menuItemActive, flagImg }}
+                        classNames={{
+                          menuItem,
+                          menuItemActive,
+                          flagWrapper,
+                          flagImg,
+                        }}
                         unknownFlagElement={unknownFlagElement}
                         active={itemProps.isoCode === initialIsoCode}
                         onAction={() => {
