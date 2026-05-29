@@ -1,4 +1,4 @@
-import type { NumberType } from 'libphonenumber-js';
+import type { PhoneNumberType } from 'libphonenumber-js';
 import type { InputProps } from '@heroui/react';
 import type { HeroTelInputContinent } from '../constants/continents.js';
 import type { HeroTelInputCountry } from '../constants/countries.js';
@@ -32,7 +32,7 @@ export interface HeroTelInputInfo {
   /** National number part, or null */
   nationalNumber: string | null;
   /** Number type (e.g. 'MOBILE'), or null */
-  numberType: Exclude<NumberType, undefined> | null;
+  numberType: Exclude<PhoneNumberType, undefined> | null;
   /** E.164 formatted value, or null */
   numberValue: string | null;
   /** Change reason */

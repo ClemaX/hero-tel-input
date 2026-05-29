@@ -32,7 +32,7 @@ export const FlagMenuItem = (props: FlagMenuItemProps) => {
         'pressed:bg-primary/80 focus:text-foreground text-foreground-900 focus:bg-primary',
         menuItem,
         {
-          [cn('bg-primary', menuItemActive)]: active,
+          [cn('bg-primary', menuItemActive) ?? '']: active,
         }
       )}
     >
